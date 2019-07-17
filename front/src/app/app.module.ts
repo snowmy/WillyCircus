@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +13,8 @@ import { ProgrammationComponent } from './programmation/programmation.component'
 import { GalerieComponent } from './galerie/galerie.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ContactComponent } from './contact/contact.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
   {
@@ -38,6 +42,11 @@ const appRoutes: Routes = [
   },
 
   {
+    path: 'admin',
+    component: AdminComponent
+  },
+
+  {
     path: '',
     redirectTo: '/cirque',
     pathMatch: 'full'
@@ -54,11 +63,16 @@ const appRoutes: Routes = [
     GalerieComponent,
     ReservationComponent,
     ContactComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
